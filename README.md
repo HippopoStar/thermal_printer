@@ -31,11 +31,11 @@ sudo /snap/bin/rpi-imager
 
 ```
 # Only superuser can edit approx.sh (obvious security reason)
-sudo chown "$(id -u root):$(id -g root)" approx.sh
+sudo chown "$( id -u root ):$( id -g root )" approx.sh
 sudo chmod 755 approx.sh
 # Compile wrapper and set rights
 gcc -o approx -Wall -Wextra -Werror wrapper/src/main.c
-sudo chown "$( id -u root):$( id -g )" approx
+sudo chown "$( id -u root ):$( sg sudo -c 'id -g' )" approx
 sudo chmod 4750 approx
 # Print
 ./approx 'Hello World!'
